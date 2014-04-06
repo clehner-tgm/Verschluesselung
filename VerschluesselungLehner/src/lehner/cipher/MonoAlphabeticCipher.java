@@ -53,11 +53,10 @@ public class MonoAlphabeticCipher implements Cipher{
 	  * 
 	  * @param text  der zu verschlüsselnde Text
 	  * @return  der verschlüsselte Text
-	  * @throws IllegalArgumentException  wenn ein Zeichen eingegeben wird, welches nicht im Alphabet
-	  * enthalten ist
 	  */
 	@Override
-	public String encrypt(String text) throws IllegalArgumentException{
+	public String encrypt(String text){
+		char b2;
 		String textEncrypt = "";
 		String textKlein = text.toLowerCase();
 		String alphabet = "abcdefghijklmnopqrstuvwxyzäöüß";
@@ -65,9 +64,10 @@ public class MonoAlphabeticCipher implements Cipher{
 			char buchstabe = textKlein.charAt(i);
 			int stelle = alphabet.indexOf(buchstabe);
 			if(stelle==-1){
-				throw new IllegalArgumentException("Kein registrierter Buchstabe angegeben!");
+				b2 = textKlein.charAt(i);
+			} else{
+				b2 = this.secretAlphabet.charAt(stelle);
 			}
-			char b2 = this.secretAlphabet.charAt(stelle);
 			textEncrypt+=b2;
 		}
 		return textEncrypt;
@@ -79,11 +79,10 @@ public class MonoAlphabeticCipher implements Cipher{
 	 * 
 	 * @param text  der zu entschlüsselnde Text
 	 * @return  der entschlüsselte Text
-	 * @throws IllegalArgumentException  wenn ein Zeichen eingegeben wird, welches nicht im Alphabet
-	  * enthalten ist
 	 */
 	@Override
-	public String decrypt(String text) throws IllegalArgumentException{
+	public String decrypt(String text){
+		char b2;
 		String textDecrypt = "";
 		String alphabet = "abcdefghijklmnopqrstuvwxyzäöüß";
 		String textKlein = text.toLowerCase();
@@ -91,9 +90,10 @@ public class MonoAlphabeticCipher implements Cipher{
 			char buchstabe = textKlein.charAt(i);
 			int stelle = this.secretAlphabet.indexOf(buchstabe);
 			if(stelle==-1){
-				throw new IllegalArgumentException("Kein registrierter Buchstabe angegeben!");
+				b2 = textKlein.charAt(i);
+			} else{
+				b2 = alphabet.charAt(stelle);
 			}
-			char b2 = alphabet.charAt(stelle);
 			textDecrypt+=b2;
 		}
 		return textDecrypt;
