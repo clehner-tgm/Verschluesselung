@@ -13,6 +13,9 @@ import org.junit.Test;
  */
 public class Testing {
 
+	/**
+	 * Test, ändern des secretAlphabet durch den Konstruktor von SubstitutionCipher
+	 */
 	@Test
 	public void test1(){
 		String a = "ßüöäzyxwvutsrqponmlkjihgfedcba";
@@ -22,6 +25,10 @@ public class Testing {
 		}
 	}
 	
+	/**
+	 * Test, ändern des secretAlphabet so, dass eine Exception geworfen wird, da zu wenige Buchstaben
+	 * im neuen Alphabet sind
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void test2(){
 		String a = "ßüöäzyxwvutsrqponmlkjihgfedcba";
@@ -29,6 +36,10 @@ public class Testing {
 		s.setSecretAlphabet("ßüöäzyxwva");
 	}
 	
+	/**
+	 * Test, ändern des secretAlphabet so, dass eine Exception geworfen wird, da doppelte Buchstaben
+	 * im neuen Alphabet sind
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void test3(){
 		String a = "ßüöäzyxwvutsrqponmlkjihgfedcba";
@@ -36,6 +47,9 @@ public class Testing {
 		s.setSecretAlphabet("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	}
 	
+	/**
+	 * Test, eingeben eines Strings und diesen verschlüsseln lassen
+	 */
 	@Test
 	public void test4(){
 		String a = "ßüöäzyxwvutsrqponmlkjihgfedcba";
@@ -45,6 +59,9 @@ public class Testing {
 		}
 	}
 	
+	/**
+	 * Test, eingeben eines Strings und diesen entschlüsseln lassen
+	 */
 	@Test
 	public void test5(){
 		String a = "ßüöäzyxwvutsrqponmlkjihgfedcba";
@@ -54,6 +71,10 @@ public class Testing {
 		}
 	}
 	
+	/**
+	 * Test, anzeigen lassen des secretAlphabets vom Konstruktor MonoAlphabeticCipher, dieser sollte
+	 * dem normalen Alphabet entsprechen
+	 */
 	@Test
 	public void test6(){
 		MonoAlphabeticCipher m = new MonoAlphabeticCipher();
@@ -62,6 +83,9 @@ public class Testing {
 		}
 	}
 	
+	/**
+	 * Test, einen String zuerst verschlüsseln und dann entschlüsseln lassen
+	 */
 	@Test
 	public void test7(){
 		String a = "ßüöäzyxwvutsrqponmlkjihgfedcba";
@@ -73,6 +97,10 @@ public class Testing {
 		}
 	}
 	
+	/**
+	 * Test, einen String zuerst verschlüsseln und dann entschlüsseln lassen. Zahlen oder sonstige
+	 * Zeichen sollen so bleiben wie sie sind.
+	 */
 	@Test
 	public void test8(){
 		String a = "ßüöäzyxwvutsrqponmlkjihgfedcba";
